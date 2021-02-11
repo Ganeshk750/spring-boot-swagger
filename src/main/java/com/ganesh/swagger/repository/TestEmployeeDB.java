@@ -21,7 +21,7 @@ public class TestEmployeeDB {
         return Stream.of(
                 new Employee(1, "Aryan", "aryan@gmail.com", "India", Profile.TESTER),
                 new Employee(2, "Vikash", "vikash@gmail.com", "USA", Profile.MANAGER),
-                new Employee(3, "Pyush", "pyush@gmail.com", "India", Profile.TESTER),
+                new Employee(3, "Pyush", "pyush@gmail.com", "India", Profile.DEVELOPER),
                 new Employee(4, "Ayush", "ayush@gmail.com", "NEPAL", Profile.DEVELOPER),
                 new Employee(5, "Mukul", "mukul@gmail.com", "USA", Profile.PROJECT_MANAGER),
                 new Employee(6, "Gupta", "gupta@gmail.com", "India", Profile.HR),
