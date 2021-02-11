@@ -35,10 +35,34 @@ public class EmployeeController {
 
     @GetMapping("/getEmployee/{employeeName}")
     public Employee getEmployeeByName(@PathVariable(value="employeeName") String employeeName){
+
+        logger.info("-----INFO-----: "+ "--getEmployeeByName()-- :"+ "By: "+ employeeName.toLowerCase());
+
         return testEmployeeDB.getAllEmployeeDetails()
                 .stream()
                 .filter((name) -> name.getEmployeeName().equalsIgnoreCase("employeeName"))
                 .collect(Collectors.toList()).get(0);
     }
 
+    @GetMapping("/getEmployeeByCountry/{countryName}")
+    public List<Employee> getEmployeeByCountry(@PathVariable(value="countryName") String country){
+
+        logger.info("-----INFO-----: "+ "--getEmployeeByCountry()-- :"+ "By: "+ country.toLowerCase());
+
+        List<Employee> getEmpByCountry = testEmployeeDB.getAllEmployeeDetails().stream()
+                .filter((name) -> name.getCountry().equalsIgnoreCase("country"))
+                .collect(Collectors.toList());
+        return getEmpByCountry;
+    }
+
+
+    @GetMapping("/getEmployeeByProfile/{profileName}")
+    public List<Employee> getEmployeeByProfile(@PathVariable("profileName")String profileName){
+
+        logger.info("-----INFO-----: "+ "--getEmployeeByProfile()-- :"+ "By: "+ profileName.toLowerCase());
+        return testEmployeeDB.getAllEmployeeDetails().stream()
+                .filter((pname) -> pname.getProfile().toString().equalsIgnoreCase("profileName"))
+                .collect(Collectors.toList());
+
+    }
 }
