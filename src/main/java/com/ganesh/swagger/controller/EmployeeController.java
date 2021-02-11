@@ -34,35 +34,38 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployee/{employeeName}")
-    public Employee getEmployeeByName(@PathVariable(value="employeeName") String employeeName){
+    public Employee getEmployeeByName(@PathVariable String employeeName){
 
         logger.info("-----INFO-----: "+ "--getEmployeeByName()-- :"+ "By: "+ employeeName.toLowerCase());
-
-        return testEmployeeDB.getAllEmployeeDetails()
+        Employee emp = testEmployeeDB.getAllEmployeeDetails()
                 .stream()
-                .filter((name) -> name.getEmployeeName().equalsIgnoreCase("employeeName"))
+                .filter(name -> name.getEmployeeName().equalsIgnoreCase(employeeName))
                 .collect(Collectors.toList()).get(0);
+        return emp;
     }
 
-    @GetMapping("/getEmployeeByCountry/{countryName}")
-    public List<Employee> getEmployeeByCountry(@PathVariable(value="countryName") String country){
+    @GetMapping("/getByCountry/{countryName}")
+    public List<Employee> getEmployeeByCountry(@PathVariable String countryName){
 
-        logger.info("-----INFO-----: "+ "--getEmployeeByCountry()-- :"+ "By: "+ country.toLowerCase());
+        logger.info("-----INFO-----: "+ "--getEmployeeByCountry()-- :"+ "By: "+ countryName.toLowerCase());
 
-        List<Employee> getEmpByCountry = testEmployeeDB.getAllEmployeeDetails().stream()
-                .filter((name) -> name.getCountry().equalsIgnoreCase("country"))
+        List<Employee> getEmpByCountry = testEmployeeDB.getAllEmployeeDetails()
+                .stream()
+                .filter(name -> name.getCountry().equalsIgnoreCase(countryName))
                 .collect(Collectors.toList());
         return getEmpByCountry;
     }
 
 
-    @GetMapping("/getEmployeeByProfile/{profileName}")
-    public List<Employee> getEmployeeByProfile(@PathVariable("profileName")String profileName){
+    @GetMapping("/getByProfile/{profile}")
+    public List<Employee> getEmployeeByProfile(@PathVariable String profile){
 
-        logger.info("-----INFO-----: "+ "--getEmployeeByProfile()-- :"+ "By: "+ profileName.toLowerCase());
-        return testEmployeeDB.getAllEmployeeDetails().stream()
-                .filter((pname) -> pname.getProfile().toString().equalsIgnoreCase("profileName"))
+        logger.info("-----INFO-----: "+ "--getEmployeeByProfile()-- :"+ "By: "+ profile.toLowerCase());
+        List<Employee> getEmpByProfile = testEmployeeDB.getAllEmployeeDetails()
+                .stream()
+                .filter(name -> name.getProfile().toString().equalsIgnoreCase(profile))
                 .collect(Collectors.toList());
+        return getEmpByProfile;
 
     }
 }
