@@ -13,9 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,5 +33,12 @@ public class EmployeeController {
         return testEmployeeDB.getAllEmployeeDetails();
     }
 
+    @GetMapping("/getEmployee/{employeeName}")
+    public Employee getEmployeeByName(@PathVariable(value="employeeName") String employeeName){
+        return testEmployeeDB.getAllEmployeeDetails()
+                .stream()
+                .filter((name) -> name.getEmployeeName().equalsIgnoreCase("employeeName"))
+                .collect(Collectors.toList()).get(0);
+    }
 
 }
