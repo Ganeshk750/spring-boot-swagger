@@ -7,6 +7,7 @@ package com.ganesh.swagger.model;
 
 
 public enum Profile {
+    ANY,
     DEVELOPER,
     TESTER,
     HR,
