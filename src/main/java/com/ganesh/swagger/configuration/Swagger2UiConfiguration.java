@@ -19,14 +19,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swagger2UiConfiguration {
 
-    public static final Contact DEFAULT_CONTACT = new Contact("Ganesh", "http://github.com/ganeshk750", "ganeshkr04@gmail.com");
+    public static final Contact DEFAULT_CONTACT = new Contact("Ganesh", "http://github.com/ganeshk750", "ganesh@gmail.com");
     public static final ApiInfo DEFAULT_INFO = new ApiInfo(
             "API Documentation",
             "Test Documentation",
             "1.0", "urn:tos",
             DEFAULT_CONTACT,
             "Demo 2.0",
-                    "http://github.com/ganeshk750/licenses/LICENSE-2.0");
+                    "http://github.com/ganeshk750");
     @Bean
     public Docket api(){
       return  new Docket(DocumentationType.SWAGGER_2)
